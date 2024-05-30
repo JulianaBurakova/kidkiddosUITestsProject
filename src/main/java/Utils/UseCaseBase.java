@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 
 public class UseCaseBase {
 
-    private static WebDriver webDriver;
-    private static BasePage page;
+    public static WebDriver webDriver;
+    protected static BasePage page;
 
     @BeforeAll
     public static void setupMain(){

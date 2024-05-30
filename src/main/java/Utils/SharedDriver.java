@@ -22,9 +22,9 @@ public class SharedDriver {
         switch (browser){
 
             case CHROME:
-                WebDriverManager.chromedriver().setup();
-                webDriver = new ChromeDriver();
-                break;
+             WebDriverManager.chromedriver().setup();
+             webDriver = new ChromeDriver();
+             break;
 
             case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
