@@ -30,6 +30,7 @@ public class LoginPageTest  extends UseCaseBase {
 
     @Test
     public void emptyUsernameAndPasswordTest() {
+        loginPage = mainPage.clickLoginIcon();
         loginPage.enterUsername("");
         loginPage.enterPassword("");
         loginPage.clickLoginButton();
@@ -38,6 +39,7 @@ public class LoginPageTest  extends UseCaseBase {
 
     @Test
     public void incorrectUsernameAndPasswordTest() {
+        loginPage = mainPage.clickLoginIcon();
         loginPage.enterUsername("123456@gmail");
         loginPage.enterPassword("123456");
         loginPage.clickLoginButton();

@@ -5,6 +5,8 @@ import Pages.ProductPage;
 import Utils.UseCaseBase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.JavascriptExecutor;
+
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -59,11 +61,21 @@ public class Scenario2Tests extends UseCaseBase {
     @Test
     public void testUpdateQuantityInCart() {
         booksResultsPage.selectEnglishOnlyBooks();
+
         productPage = booksResultsPage.selectBook();
+
         cartPage = productPage.addToCart();
+        double priceOfBook = productPage.getPriceOfBook();
         cartPage.updateQuantity(6);
+
+        ((JavascriptExecutor) webDriver).executeScript("window.scrollBy(0, document.body.scrollHeight)");
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+
         cartPage.clickUpdate();
+
+        assertEquals(6, cartPage.getQuantity());
+        double expectedTotalPrice = priceOfBook * cartPage.getQuantity();
+        assertEquals(expectedTotalPrice, cartPage.getTotalPrice(), "The total price is not updated correctly.");
     }
 
 }

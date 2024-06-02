@@ -31,4 +31,11 @@ public class ProductPage extends BasePage {
         clickElementByXpath(ADD_TO_CART_BUTTON);
         return new CartPage();
     }
+
+    private static final String PRICE_ELEMENT = "//span[@class='cbb-price-digits']";
+
+    public double getPriceOfBook() {
+        WebElement priceElement = findElementByXpath(PRICE_ELEMENT);
+        return Double.parseDouble(priceElement.getText());
+    }
 }
